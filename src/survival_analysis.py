@@ -34,7 +34,6 @@ args.seed = int(args.seed)
 
 
 def main():
-
     np.random.seed(args.seed)
 
     # Read data
@@ -89,9 +88,7 @@ def main():
         [er, x_rna.values]
     )
 
-   
     # Figure 1: 5-year survival counts
-
     counts = pd.Series(y).map(
         {
             0: "Died <5 years",
@@ -120,7 +117,6 @@ def main():
     plt.close()
 
     # Figure 2: PCA
-
     scaler = sklearn.preprocessing.StandardScaler()
 
     x_scaled = scaler.fit_transform(
@@ -141,7 +137,6 @@ def main():
         (0, "Died <5 years"),
         (1, "Survived ≥5 years")
     ]:
-
         mask = y == value
 
         plt.scatter(
@@ -175,10 +170,7 @@ def main():
 
     plt.close()
 
-   
     # Classification
-
-
     cv = sklearn.model_selection.StratifiedKFold(
         n_splits=5,
         shuffle=True,
@@ -237,10 +229,7 @@ def main():
         pred_full
     )
 
-    # ---------------------------------
     # Figure 3: ROC comparison
-    # ---------------------------------
-
     plt.figure(figsize=(5, 4))
 
     plt.plot(
